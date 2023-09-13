@@ -37,6 +37,7 @@ modded class PlayerBase
 	float m_antidepresantTimer;
 	float m_lastStomatchpoisonHeal;
 	float m_overdosedValue;	
+	int m_knifeHitsTotal;
 	
 	// Mind state
 	float m_mindDegradationForce;
@@ -104,6 +105,7 @@ modded class PlayerBase
 		m_radioprotectionTimer = 0;
 		m_antidepresantTimer = 0;
 		m_lastStomatchpoisonHeal = 0;
+		m_knifeHitsTotal = 0;
 		
 		
 		// Mind state
@@ -167,6 +169,7 @@ modded class PlayerBase
 		ctx.Write( m_mindStateValue );
 		ctx.Write( m_mindDegradationForce );
 		ctx.Write( m_mindDegradationTime );
+		ctx.Write( m_knifeHitsTotal );
 		
 		// VER 0.2
         ctx.Write( SYBERIA_B20_VERSION );
@@ -238,6 +241,7 @@ modded class PlayerBase
 			if (!ctx.Read( m_antibioticsTimer )) return false;
 			if (!ctx.Read( m_antibioticsStrange )) return false;
 			if (!ctx.Read( m_stomatchpoisonTimer )) return false;
+			if (!ctx.Read( m_knifeHitsTotal )) return false;
 			
 			// Mind state
 			if (!ctx.Read( m_mindStateValue )) return false;

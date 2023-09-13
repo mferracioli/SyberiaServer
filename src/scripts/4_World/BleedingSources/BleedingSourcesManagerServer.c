@@ -128,6 +128,7 @@ modded class BleedingSourcesManagerServer
 	void AddKnifeHit()
 	{
 		m_Player.GetSybStats().m_knifeHits = m_Player.GetSybStats().m_knifeHits + 1;
+		m_Player.GetSybStats().m_knifeHitsTotal = m_Player.GetSybStats().m_knifeHitsTotal + 1;
 		SetPainLevel(2);
 		m_Player.MarkSybStatsDirty(1008);
 	}
@@ -317,6 +318,9 @@ modded class BleedingSourcesManagerServer
 						zvirusInfectionChance = zvirusInfectionChance * 0.5;
 					}
 				}
+
+				// Progressive Z Virus Infection Chance
+				zvirusInfectionChance = zvirusInfectionChance * ((m_Player.GetSybStats().m_knifeHitsTotal - 1) * 0.1);
 				
 				if (Math.RandomFloat01() < zvirusInfectionChance)
 				{
